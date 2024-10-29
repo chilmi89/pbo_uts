@@ -101,6 +101,7 @@ class Mesin_cuci(TokoElektronik):
 
 
 electro = TokoElektronik(1000000, "hitam", 10)
+print(electro.get_harga())
 
 tv1 = Televisi(1200000, "silver", 8, "42 inch", "Full HD", "HDMI, USB", 120, 7)
 tv2 = Televisi(1500000, "black", 5, "55 inch", "4K", "HDMI, USB, Wi-Fi", 150, 10)
