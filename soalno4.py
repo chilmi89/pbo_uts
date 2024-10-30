@@ -1,27 +1,24 @@
 class TokoElektronik:
     def __init__(self, harga, warna, stok):
-        self.__harga = harga
+        self.harga = harga
         self.warna = warna
         self.stok = stok
 
-    def get_harga(self):
-        return self.__harga
+    def setHarga(self, harga):
+        self.harga = harga
 
-    def set_harga(self, harga):
-        self.__harga = harga
+    def getHarga(self):
+        return self.harga
 
-    def get_warna(self):
+    def setWarna(self, warna):
+        self.warna = warna
+
+    def getWarna(self):
         return self.warna
 
-    def set_warna(self, warna):
-        self.warna = warna
-
-    def get_stok(self):
-        return self.stok
-
-    def set_stok(self, stok):
-        self.stok = stok
-
+    def infoToko(self):
+        return f"Harga: {self.harga}, Warna: {self.warna}, Stok: {self.stok}"
+    
 class Mesin_cuci(TokoElektronik):
     def __init__(self, harga, warna, stok, kapasitas, type):
         super().__init__(harga, warna, stok)
@@ -44,8 +41,9 @@ class Mesin_cuci(TokoElektronik):
         return "Warna : {} , Kapasitas : {} , Tipe : {} ".format(self.warna, self.kapasitas, self.type)
 
     def hargaTotalMesinCuci(self):
-        return self.get_harga() * self.stok
-    
+        return self.harga * self.stok
+
+
 class Kulkas (TokoElektronik):
     def __init__(self, harga, warna, stok, model, KapasitasFreezer, teknologiPendingin, konsumsiDaya, berat):
         super().__init__(harga, warna, stok)
@@ -90,11 +88,32 @@ class Kulkas (TokoElektronik):
 
     def hargaTotalKulkas(self):
         harga = self.get_harga()
-        if harga >= 2320000:
+        if harga >= 3120000:
             print("anda mendapatkan diskon sebesaer 10 %")
-            diskon = 0.1 * harga * self.stok
+            diskon = 0.2 * harga * self.stok
             return harga * self.stok - diskon
-    
 
+
+
+mesin_cuci1 = Mesin_cuci(1500000, "Putih", 5, 8, "Bukaan Depan")
+mesin_cuci2 = Mesin_cuci(2000000, "Hitam", 3, 10, "Bukaan Atas")
+print(mesin_cuci1.infoMesinCuci())
+print(mesin_cuci2.infoMesinCuci())
+
+kulkas1 = Kulkas(2500000, "Hitam", 3, "Side by Side", 100, "No Frost", 250, 70)
+kulkas2 = Kulkas(1800000, "Silver", 2, "Two Door", 80, "Direct Cool", 200, 60)
+# print("Type Mesin Cuci:")
+# print(type(mesin_cuci1))
+# print(type(mesin_cuci2))
+
+print(kulkas1.infoKulkas())
+print(kulkas2.infoKulkas())
+
+
+# HARGA YANG MENDAPATKAN DISKON
+print(kulkas1.hargaTotalKulkas())
+
+# HARGA YANG TIDAK MENDAPATKAN DISKON
+print(kulkas2.hargaTotalKulkas())
 
 
