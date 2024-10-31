@@ -1,3 +1,5 @@
+from prettytable import PrettyTable
+
 class AlatHidroponikMart:
     def __init__(self, harga, stok):
         self.harga = harga
@@ -128,6 +130,17 @@ class SetPipa36Hole(AlatHidroponikMart):
 data_alat_hidroponik = [
     {
         "nama": "Starter Kit Pemula",
+        "harga": 1500000,
+        "stok": 30,
+        "jumlah_baki": 4,
+        "hole_tutup_baki": 5,
+        "warna": "Merah",
+        "nama_benih_sayur": "BAYAM",
+        "jenis_nutrisi_sayur": "KOMPOS",
+        "kelas": StarterKitPemula
+    },
+    {
+        "nama": "Starter Kit Pemula",
         "harga": 500000,
         "stok": 20,
         "jumlah_baki": 3,
@@ -148,16 +161,39 @@ data_alat_hidroponik = [
         "nama_pompa": "Pompa air",
         "daya_pompa": 200,
         "kelas": SetPipa36Hole
+    },
+    {
+        "nama": "Set Pipa 36 Hole",
+        "harga": 1500000,
+        "stok": 15,
+        "jumlah_pipa": 26,
+        "panjang_pipa": 30,
+        "lebar_produk": 10,
+        "tinggi_produk": 13,
+        "nama_pompa": "Pompa air",
+        "daya_pompa": 20,
+        "kelas": SetPipa36Hole
     }
+
+    
 ]
 
+
+print("="*110)
 for data in data_alat_hidroponik:
     if data["kelas"] == StarterKitPemula:
         alat_hidroponik = data["kelas"](data["harga"], data["stok"], data["jumlah_baki"], data["hole_tutup_baki"], data["warna"], data["nama_benih_sayur"], data["jenis_nutrisi_sayur"])
-        print(alat_hidroponik.infoStarterKit())
-        print("Harga Total : Rp. {}".format(alat_hidroponik.infoTotalHargaStarterKit()))
+        table = PrettyTable()
+        table.field_names = ["Nama", "Harga", "Stok", "Jumlah Baki", "Hole Tutup Baki", "Warna", "Nama Benih Sayur", "Jenis Nutrisi Sayur", "Harga Total"]
+        table.add_row([data["nama"], alat_hidroponik.getHarga(), alat_hidroponik.getStok(), alat_hidroponik.getJumlahBaki(), alat_hidroponik.getTutupBaki(), alat_hidroponik.getWarna(), alat_hidroponik.getBenihSayur(), alat_hidroponik.getNutrisiSayur(), alat_hidroponik.infoTotalHargaStarterKit()])
+        print(table)
+        print("="*110)
     else:
         alat_hidroponik = data["kelas"](data["harga"], data["stok"], data["jumlah_pipa"], data["panjang_pipa"], data["lebar_produk"], data["tinggi_produk"], data["nama_pompa"], data["daya_pompa"])
-        print(alat_hidroponik.infoSetPipa())
-        print("Harga Total : Rp. {}".format(alat_hidroponik.infoTotalHargaSetPipa()))
+        table = PrettyTable()
+        table.field_names = ["Nama", "Harga", "Stok", "Jumlah Pipa", "Panjang Pipa", "Lebar Produk", "Tinggi Produk", "Nama Pompa", "Daya Pompa", "Harga Total"]
+        table.add_row([data["nama"], alat_hidroponik.getHarga(), alat_hidroponik.getStok(), alat_hidroponik.getJumlahPipa(), alat_hidroponik.getPanjangPipa(), alat_hidroponik.getLebarProduk(), alat_hidroponik.getTinggiProduk(), alat_hidroponik.getNamaPompa(), alat_hidroponik.getDayaPompa(), alat_hidroponik.infoTotalHargaSetPipa()])
+        print(table)
+        print("="*110)
+
 

@@ -68,12 +68,14 @@ class Televisi(TokoElektronik):
 
     def hargaTotalTV(self):
         harga = self.harga 
-        if harga >= 2100000 and self.stok == 2:
-            print("anda mendapatkan diskon sebesaer 10 %")
-            diskon = 0.1 * harga * self.stok
+        if harga >= 2500000 or self.stok == 2:
+            print("anda mendapatkan diskon sebesaer 15 %")
+            diskon = 0.15 * harga * self.stok
             return harga - diskon
         else:
             return "maaf anda tidak mendapat diskon", harga
+
+
 
 class Mesin_cuci(TokoElektronik):
     def __init__(self, harga, warna, stok, kapasitas, type):
@@ -100,8 +102,6 @@ class Mesin_cuci(TokoElektronik):
         return self.harga * self.stok
 
 
-electro = TokoElektronik(1000000, "hitam", 10)
-data_elektronik = [electro]
 
 tv1 = Televisi(120000, "silver", 8, "42 inch", "Full HD", "HDMI, USB", 120, 7)
 tv2 = Televisi(1500000, "black", 5, "55 inch", "4K", "HDMI, USB, Wi-Fi", 150, 10)
@@ -109,18 +109,8 @@ data_tv = [tv1, tv2]
 
 mc = Mesin_cuci(2000000, "putih", 5, "8kg", "Front Load")
 mc2 = Mesin_cuci(2000000, "hitam", 5, "8kg", "back Load")
-data_mesin_cuci = [mc, mc2]
 
-for data in data_elektronik:
-    print("=======================================================================")
-    print(data.get_harga())
 
-for data in data_tv:
-    print("=======================================================================")
-    print(data.infoTV())
-    print("Harga Total : Rp. {}".format(data.hargaTotalTV()))
 
-for data in data_mesin_cuci:
-    print("=======================================================================")
-    print(data.infoMesinCuci())
-    print("Harga Total : Rp. {}".format(data.hargaTotalMesinCuci()))
+
+

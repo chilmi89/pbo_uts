@@ -95,6 +95,6 @@ class Kulkas (TokoElektronik):
             diskon = 0.1 * harga * self.stok
             return harga * self.stok - diskon
     
-
+Z
 
 
